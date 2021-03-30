@@ -12,6 +12,15 @@ bin-release/
 *.air
 *.ipa
 *.apk
+# Maven-build
+target
+
+#yarn-build
+node_modules
+
+#idea-generated
+.idea
+*.iml
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
