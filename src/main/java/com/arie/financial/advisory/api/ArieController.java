@@ -28,13 +28,13 @@ public class ArieController {
     public Response getLoanTypes (){
         System.out.println("It Made it Here, Hurrayyyy!!");
         Response response = new Response();
-        try {
-            response.setData(loansMapperService.getLoans());
-            response.setStatus(true);
-        }catch (ArieException ex){
-            arieAdminExceptionResponse(response, ex);
-        }
-        System.out.println(response.getData());
+//        try {
+//            response.setData(loansMapperService.getLoans());
+//            response.setStatus(true);
+//        }catch (ArieException ex){
+//            arieAdminExceptionResponse(response, ex);
+//        }
+//        System.out.println(response.getData());
         return response;
 
     }
