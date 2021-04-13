@@ -58,6 +58,12 @@ const Header = ({
     setIsactive(false);
   }
 
+  const onClick = () => {
+    document.body.classList.remove('off-nav-is-active');
+    nav.current && (nav.current.style.maxHeight = null);
+    setIsactive(false);
+  }
+
   const keyPress = (e) => {
     isActive && e.keyCode === 27 && closeMenu();
   }
@@ -79,7 +85,7 @@ const Header = ({
       {...props}
       className={classes}
     >
-      <div className="container" style={{"max-width": "90%"}}>
+      <div className="container" style={{"maxWidth": "90%"}}>
         <div className={
           classNames(
             'site-header-inner',
@@ -115,7 +121,7 @@ const Header = ({
                       <Link to="#0" onClick={closeMenu}>About us</Link>
                     </li>
                     <li>
-                      <Link to="#0" onClick={closeMenu}>Services</Link>
+                      <Link to="/services" onClick={closeMenu}>Services</Link>
                     </li>
                   </ul>
                   {!hideSignin &&

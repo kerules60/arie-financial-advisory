@@ -38,7 +38,7 @@ const SectionHeader = ({
           {...props}
           className={classes}
         >
-          <div className="container-xs">
+          <div className="container-xs" style={{maxWidth : "1000px"}}>
             {children}
             {data.title &&
               <Component className={

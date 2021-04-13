@@ -35,4 +35,14 @@ public class Response extends Data {
     public void setSuccessMsg(String successMsg) {
         this.successMsg = successMsg;
     }
+
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "status=" + status +
+                ", errorMsg='" + errorMsg + '\'' +
+                ", successMsg='" + successMsg + '\'' +
+                '}';
+    }
 }

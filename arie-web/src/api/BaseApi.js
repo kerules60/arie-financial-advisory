@@ -58,34 +58,29 @@ export default class BaseApi {
     }
 
     _checkStatus(response) {
+        console.log('THIS IS  THE RESPONSE ', response);
         if (response.status >= 200 && response.status < 300) {
             return response;
         }
-        // else{
-        //     const error = new Error ();
-        //     error.response = response;
-        //     throw error;
-        // }
+        else{
+            const error = new Error (response.status);
+            error.response = response;
+            throw error;
+        }
     }
 
     _getData(url) {
         return fetch(url, {
-            mode: 'no-cors',
-            credentials: 'same-origin',
-            headers:{
-                mode: 'no-cors',
-                credentials: 'same-origin',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Cache-Control, Pragma, Origin, Content-Type',
-                'Access-Control-Allow-Methods': 'GET, HEAD, POST, DELETE, TRACE, OPTIONS, PATCH',
-                pragma: 'no-cache'
+            headers: {
+                Accept: 'application/json',
+            },
+            method: 'GET'
+        }).then((t:any) => {
+                return t.json(); // <-- this part is missing
+            }).then((t:any) => {
+                const results = t;
+                return results;
             }
-        }).then(this._checkStatus)
-            .then(this._parseJSON)
-            .then(function (data){
-                return data;
-            });
+        )
     }
 }

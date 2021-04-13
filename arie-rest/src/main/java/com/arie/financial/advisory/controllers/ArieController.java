@@ -1,4 +1,4 @@
-package com.arie.financial.advisory.api;
+package com.arie.financial.advisory.controllers;
 
 import com.arie.financial.advisory.exception.ArieException;
 import com.arie.financial.advisory.repositories.LoansRepository;
@@ -18,7 +18,7 @@ public class ArieController {
     @Autowired
     LoansRepository loansRepository;
 
-    @GetMapping(value = "/getLoanTypes")
+    @RequestMapping(value = "/getLoanTypes", method = RequestMethod.GET, produces = "application/json")
     public Response getLoanTypes (){
         System.out.println("It Made it Here, Hurrayyyy!!");
         Response response = new Response();
@@ -28,7 +28,7 @@ public class ArieController {
         }catch (ArieException ex){
             arieAdminExceptionResponse(response, ex);
         }
-        System.out.println(response.getData());
+        System.out.println("THIS IS THE RESPONSE WE GIVE TO THE UI:" + response.toString());
         return response;
 
     }
