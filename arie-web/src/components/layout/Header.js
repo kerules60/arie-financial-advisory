@@ -114,8 +114,7 @@ const Header = ({
                 <div className="header-nav-inner">
                   <ul className={
                     classNames(
-                      'list-reset text-xs',
-                      navPosition && `header-nav-${navPosition}`
+                      'list-reset text-xs header-nav-right'
                     )}>
                     <li>
                       <Link to="#0" onClick={closeMenu}>About us</Link>
@@ -129,7 +128,7 @@ const Header = ({
                       className="list-reset header-nav-right"
                     >
                       <li>
-                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Login</Link>
+                        <Link to="#0" className="button button-primary button-wide-mobile button-sm" onClick={closeMenu}>Get Started</Link>
                       </li>
                       <li>
                         <Link to="#0" onClick={closeMenu}>Call us: 555-555-5555</Link>

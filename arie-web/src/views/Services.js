@@ -1,7 +1,7 @@
 import React from 'react';
 // import sections
 // import ServicesPage from '../components/sections/ServicesPage';
-// import FeaturesTiles from '../components/sections/FeaturesTiles';
+// import LoansTiles from '../components/sections/LoansTiles';
 import FeaturesSplit from '../components/sections/FeaturesSplit';
 import Testimonial from '../components/sections/Testimonial';
 import Cta from '../components/sections/Cta';

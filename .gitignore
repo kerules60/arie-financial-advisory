@@ -33,4 +33,4 @@ build/
 .vscode/
 
 #
-/yarn.lock
+./yarn.lock

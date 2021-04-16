@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
+import Api from "../../api/Api";
+
 class ServicesPage extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isVisible: true,
+            isLoading: true,
             services: undefined,
             sectionHeader : {
                 title: 'Customized Service to fit the needs of any business',
@@ -20,74 +22,75 @@ class ServicesPage extends React.Component {
         };
     }
 
-
     fillServices() {
-        const services = [
-            {
-                serviceName: "service1",
-                description: "this is a test description and will be replaced by a api call ",
-            },
-            {
-                serviceName: "service2",
-                description: "this is a test description and will be replaced by a api call",
-            },
-            {
-                serviceName: "service3",
-                description: "this is a test description and will be replaced by a api call",
-            },
-        ];
-        console.log('services', services);
-        this.setState({ services: services.map(
-            elem =>{
-                return{serviceName: elem.serviceName, description: elem.description};
-            }
-            )});
+        Api.getServices()
+            .then((response) => {
+                    if (response) {
+                        const dbServices = response.data;
+                        console.log('Services from DB', dbServices);
+                        this.setState({
+                            services: dbServices.map(
+                                elem => {
+                                    return {serviceName: elem.serviceName, serviceDescription: elem.serviceDescription};
+                                }
+                            ), isLoading: false
+                        });
+
+                    }
+                }
+            )
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.fillServices();
-        console.log('THIS IS THE Component Did Mount Method');
     }
 
 
     render() {
         return (
-            <div className="container">
-                <div className="features-split-inner section-inner has-top-divider has-bottom-divider">
-                    <br/>
-                    <SectionHeader data={this.state.sectionHeader} className="center-content" />
-                    <div className="split-wrap invert-mobile invert-desktop align-top">
-                                {/*loop here */}
-                        {this.state.services.map((elem) => (
-                            <div className="split-item">
-                                <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-                                    <h3 className="mt-0 mb-12">
-                                        {elem.serviceName}
-                                    </h3>
-                                    <p className="m-0">
-                                        {elem.description}
-                                    </p>
-                                </div>
-                                <div className={
-                                    classNames(
-                                        'split-item-image center-content-mobile reveal-from-bottom',
-                                        'split-item-image-fill'
-                                    )}
-                                     data-reveal-container=".split-item">
-                                    <Image
-                                        src={require('./../../assets/images/features-split-image-01.png')}
-                                        alt="Features split 01"
-                                        width={528}
-                                        height={396} />
+            <div>
+                {this.state.isLoading ? (<div>Page is still loading ..</div>) :
+                    (
+                        <div className="container">
+                            <div className="features-split-inner section-inner has-top-divider has-bottom-divider">
+                                <br/>
+                                <SectionHeader data={this.state.sectionHeader} className="center-content" />
+                                <div className="split-wrap invert-mobile invert-desktop align-top">
+                                    {/*loop here */}
+                                    {this.state.services.map((elem) => (
+                                        <div className="split-item">
+                                            <div className="split-item-content center-content-mobile " data-reveal-container=".split-item">
+                                                <h3 className="mt-0 mb-12">
+                                                    {elem.serviceName}
+                                                </h3>
+                                                <p className="m-0">
+                                                    {elem.serviceDescription}
+                                                </p>
+                                            </div>
+                                            <div className={
+                                                classNames(
+                                                    'split-item-image center-content-mobile',
+                                                    'split-item-image-fill'
+                                                )}
+                                                 data-reveal-container=".split-item">
+                                                <Image
+                                                    src={require('./../../assets/images/features-split-image-01.png')}
+                                                    alt="Features split 01"
+                                                    width={528}
+                                                    height={396} />
+                                            </div>
+                                        </div>
+                                    ))}
+
                                 </div>
                             </div>
-                        ))}
-
-                    </div>
-                </div>
+                        </div>
+                    )
+                }
             </div>
         );
     }
 }
+
 
 export default ServicesPage;
