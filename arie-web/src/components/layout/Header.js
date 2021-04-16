@@ -117,10 +117,10 @@ const Header = ({
                       'list-reset text-xs header-nav-right'
                     )}>
                     <li>
-                      <Link to="#0" onClick={closeMenu}>About us</Link>
+                      <Link to="/services" onClick={closeMenu}>Services</Link>
                     </li>
                     <li>
-                      <Link to="/services" onClick={closeMenu}>Services</Link>
+                      <Link to="/about" onClick={closeMenu}>About</Link>
                     </li>
                   </ul>
                   {!hideSignin &&

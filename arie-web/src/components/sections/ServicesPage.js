@@ -27,7 +27,6 @@ class ServicesPage extends React.Component {
             .then((response) => {
                     if (response) {
                         const dbServices = response.data;
-                        console.log('Services from DB', dbServices);
                         this.setState({
                             services: dbServices.map(
                                 elem => {

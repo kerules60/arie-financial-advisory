@@ -3,7 +3,6 @@ import ButtonGroup from '../components/elements/ButtonGroup';
 import Button from '../components/elements/Button';
 import Image from '../components/elements/Image';
 import Modal from '../components/elements/Modal';
-import LoansTiles from "../components/sections/LoansTiles";
 import Api from "../api/Api";
 import SectionHeader from "../components/sections/partials/SectionHeader";
 import autoBind from 'react-autobind';
@@ -41,7 +40,6 @@ class HomePage extends React.Component {
       .then((response) => {
         if (response) {
           const loans = response.data;
-          console.log('THESE ARE LOANS FROM API ', loans);
           this.setState({
             loans: loans.map(
                 elem => {
@@ -64,8 +62,8 @@ class HomePage extends React.Component {
           {this.state.loading ? (<div>Page is still loading ..</div>) :
             (
               <div className="container">
-                <div className='features-tiles-inner section-inner pt-0  has-bottom-divider'>
-                  <SectionHeader data={this.state.sectionHeader} className="center-content" bottomDivider/>
+                <div className='features-tiles-inner section-inner pt-0 '>
+                  <SectionHeader data={this.state.sectionHeader} className="center-content" />
                   <div className='tiles-wrap center-content push-left'>
                     {this.state.loans.map((elem) =>
                       (
@@ -105,7 +103,7 @@ class HomePage extends React.Component {
   renderTopSection() {
     return (
       <div className="container-sm ">
-        <div className='hero-inner section-inner has-top-divider has-bottom-divider'>
+        <div className='hero-inner section-inner has-top-divider '>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom center-content" data-reveal-delay="200">
               Jump start your Business in the right direction
