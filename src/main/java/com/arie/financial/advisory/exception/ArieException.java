@@ -1,7 +1,6 @@
 package com.arie.financial.advisory.exception;
 
 import com.arie.financial.advisory.response.Response;
-import org.slf4j.LoggerFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://ariedb.cnsjmaowunhf.us-west-2.rds.amazonaws.com:3306/ariedb
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+
+server:
+  port: 5000
+
+
+
