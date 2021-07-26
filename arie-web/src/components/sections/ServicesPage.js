@@ -4,6 +4,7 @@ import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
 import Api from "../../api/Api";
+import {useHistory} from "react-router-dom";
 
 class ServicesPage extends React.Component {
 

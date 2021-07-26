@@ -116,11 +116,17 @@ const Header = ({
                     classNames(
                       'list-reset text-xs header-nav-right'
                     )}>
+                     <li>
+                      <Link to="/services" onClick={closeMenu}>Loans</Link>
+                    </li>
                     <li>
                       <Link to="/services" onClick={closeMenu}>Services</Link>
                     </li>
                     <li>
                       <Link to="/about" onClick={closeMenu}>About</Link>
+                    </li>
+                     <li>
+                      <Link to="/contact" onClick={closeMenu}>Contact</Link>
                     </li>
                   </ul>
                   {!hideSignin &&
@@ -141,6 +147,7 @@ const Header = ({
       </div>
     </header>
   );
+
 }
 
 Header.propTypes = propTypes;
